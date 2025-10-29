@@ -29,11 +29,12 @@ curl -X POST http://localhost:5000/api/scan \
 
 ## Project Structure
 
-vulcheck/
+vulcheck/<br>
 ├── app.py              # Main app <br>
 ├── requirements.txt    # Dependencies <br>
 ├── Dockerfile         # Docker config <br>
 ├── templates/         # HTML pages <br>
 └── modules/           # Scanner modules <br>
+
 
 
