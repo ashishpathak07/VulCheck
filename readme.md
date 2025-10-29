@@ -1,7 +1,7 @@
-VulCheck
-A basic vulnerability assessment tool for web applications.
+##VulCheck
+**A basic vulnerability assessment tool for web applications.
 
-Features : 
+#Features : 
   SQL Injection scanning
   XSS (Cross-Site Scripting) detection
   CSRF vulnerability checking
@@ -16,24 +16,24 @@ Local Installation -
   python app.py
   Then open http://localhost:5000
 
-Usage
+##Usage
   Go to "New Scan"
   Enter target URL (e.g., http://testphp.vulnweb.com)
   Select scan types
   Click "Start Scan"
   View results
   
-API
+##API
 curl -X POST http://localhost:5000/api/scan \
   -H "Content-Type: application/json" \
   -d '{"target_url": "http://example.com", "scan_types": ["sql", "xss"]}'
 
-Project Structure
+##Project Structure
 
 vulcheck/
-├── app.py              # Main app
-├── requirements.txt    # Dependencies
-├── Dockerfile         # Docker config
-├── templates/         # HTML pages
+├── app.py              # Main app <br>
+├── requirements.txt    # Dependencies <br>
+├── Dockerfile         # Docker config <br>
+├── templates/         # HTML pages <br>
+└── modules/           # Scanner modules <br>
 
-└── modules/           # Scanner modules
