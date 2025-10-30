@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="results-container">
+    <h2>Scan Results</h2>
+    
+    {% if results %}
+    <div class="scan-summary">
+        <h3>Scan Summary</h3>
+        <p><strong>Target URL:</strong> {{ results.target_url }}</p>
+        <p><strong>Scan Date:</strong> {{ results.timestamp }}</p>
+        <p><strong>Vulnerabilities Found:</strong> {{ results.vulnerabilities|length }}</p>
+    </div>
+    
+    {% if results.vulnerabilities %}
+    <div class="vulnerabilities">
+        <h3>Detected Vulnerabilities</h3>
+        {% for vuln in results.vulnerabilities %}
+        <div class="vulnerability {{ vuln.severity|lower }}">
+            <h4>{{ vuln.name }} - <span class="severity {{ vuln.severity|lower }}">{{ vuln.severity }}</span></h4>
+            <p><strong>Description:</strong> {{ vuln.description }}</p>
+            <p><strong>Location:</strong> {{ vuln.location }}</p>
+            {% if vuln.payload %}
+            <p><strong>Payload:</strong> <code>{{ vuln.payload }}</code></p>
+            {% endif %}
+            {% if vuln.recommendation %}
+            <p><strong>Recommendation:</strong> {{ vuln.recommendation }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-vulnerabilities">
+        <p>No vulnerabilities detected.</p>
+    </div>
+    {% endif %}
+    
+    <div class="actions">
+        <button onclick="window.print()" class="btn">Print Report</button>
+        <a href="{{ url_for('scan') }}" class="btn primary">New Scan</a>
+    </div>
+    {% else %}
+    <div class="no-results">
+        <p>No scan results available. Please run a scan first.</p>
+        <a href="{{ url_for('scan') }}" class="btn primary">Run Scan</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
